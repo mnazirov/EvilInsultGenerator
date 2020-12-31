@@ -13,11 +13,8 @@ class NetworkManager {
     
     private init() {}
     
-    var currentInsult = Insult(insult: "YOU MUST HAVE BEEN BORN ON A HIGHWAY, BECAUSE THAT'S WHERE MOST ACCIDENTS HAPPEN.")
-    
-    func showInsult() {
-    
-        guard let url = URL(string: "https://evilinsult.com/generate_insult.php?lang=en&type=json") else { return }
+    func fetchData(from urlJSON: String, in complition: @escaping (Insult) -> Void) {
+        guard let url = URL(string: urlJSON) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
@@ -28,7 +25,10 @@ class NetworkManager {
             guard let data = data else { return }
             
             do {
-                self.currentInsult = try JSONDecoder().decode(Insult.self, from: data)
+                let currentInsult = try JSONDecoder().decode(Insult.self, from: data)
+                DispatchQueue.main.async {
+                    complition(currentInsult)
+                }
             } catch let error {
                 print(error)
             }

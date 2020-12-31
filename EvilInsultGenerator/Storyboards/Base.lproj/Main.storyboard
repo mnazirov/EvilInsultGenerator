@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="45" id="L0n-9c-0RN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Start">
+                                <state key="normal" title="Insult me">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

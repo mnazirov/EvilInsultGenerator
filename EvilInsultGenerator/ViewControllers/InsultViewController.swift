@@ -13,7 +13,7 @@ class InsultViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var notebookImageView: UIImageView!
     
-    var networkManager = NetworkManager.shared
+    private var networkManager = NetworkManager.shared
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,10 @@ class InsultViewController: UIViewController {
     }
     
     @IBAction func startButtonPassed(_ sender: UIButton) {
-        networkManager.showInsult()
+        networkManager.fetchData(
+            from: "https://evilinsult.com/generate_insult.php?lang=en&type=json") { currentInsult in
+            self.insultLabel.text = currentInsult.insult
+        }
         
         sender.setTitle("Show more", for: .normal)
         
@@ -37,7 +40,6 @@ class InsultViewController: UIViewController {
             insultLabel.isHidden = false
         }
         
-        insultLabel.text = networkManager.currentInsult.insult
     }
     
 }
