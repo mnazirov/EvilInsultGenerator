@@ -13,7 +13,7 @@ class InsultViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var notebookImageView: UIImageView!
     
-    var networkManager = NetworkManager()
+    var networkManager = NetworkManager.shared
         
     override func viewDidLoad() {
         super.viewDidLoad()

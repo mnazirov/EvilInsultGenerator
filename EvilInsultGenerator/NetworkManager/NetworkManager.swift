@@ -9,6 +9,10 @@ import Foundation
 
 class NetworkManager {
     
+    static let shared = NetworkManager()
+    
+    private init() {}
+    
     var currentInsult = Insult(insult: "YOU MUST HAVE BEEN BORN ON A HIGHWAY, BECAUSE THAT'S WHERE MOST ACCIDENTS HAPPEN.")
     
     func showInsult() {
